@@ -79,13 +79,34 @@ A Go-based HTTP application is containerized with Docker, deployed to a local Ku
 <br>
 <br>
 
-**I built a Docker image for my Go app and deployed it to a local Kubernetes cluster using Minikube. Then I checked that the pods were running and exposed the service so I could access the app in the browser.**
+**I built a Docker image for my Go app and deployed it to a local Kubernetes cluster using Minikube. Then I checked that the pods were running and exposed the service so I could access the app in the browser:**
 
 
 <img width="2163" height="1242" alt="Screenshot 2026-01-21 160632" src="https://github.com/user-attachments/assets/500d41cd-d3d2-4109-a4aa-d609d1023208" />
 <img width="1006" height="277" alt="Screenshot 2026-01-21 160849" src="https://github.com/user-attachments/assets/fe8c86d7-3885-45e1-b47b-76e5c4c74c23" />
 <img width="1340" height="608" alt="Screenshot 2026-01-21 161029" src="https://github.com/user-attachments/assets/206cceec-59eb-4efe-83e5-0d97153531ac" />
 <img width="486" height="181" alt="Screenshot 2026-01-21 161050" src="https://github.com/user-attachments/assets/583be68e-fcc7-47bd-8919-2da679fc67d3" />
+
+**This page shows that the Go app is exposing metrics at the /metrics endpoint. It confirms that Prometheus can collect performance data from the application for monitoring in Grafana:**
+
+<img width="1185" height="1336" alt="Screenshot 2026-01-21 161117" src="https://github.com/user-attachments/assets/6ac75eed-2f90-4565-a878-a17693c7d8de" />
+
+**I installed Helm on Windows using winget, added the Prometheus community Helm repository, and updated it. Then I used Helm to deploy the kube-prometheus-stack, which installed Prometheus, Grafana, and related monitoring components into my Kubernetes cluster successfully:**
+
+<img width="1392" height="459" alt="Screenshot 2026-01-21 162133" src="https://github.com/user-attachments/assets/509931df-236f-4fe2-bc26-f9d139fad433" />
+<img width="2099" height="1189" alt="Screenshot 2026-01-21 162357" src="https://github.com/user-attachments/assets/779594d7-0f5b-4464-a340-e241aebd86ee" />
+
+**I installed the Prometheus and Grafana monitoring stack using Helm in a dedicated monitoring namespace and verified that all monitoring pods were running successfully. I then retrieved the Grafana admin password, port-forwarded the Grafana service, and accessed the Grafana dashboard locally to confirm the setup was working:**
+
+<img width="1106" height="999" alt="Screenshot 2026-01-21 163528" src="https://github.com/user-attachments/assets/5318bd25-07da-4b3f-bebe-bdfa98a4c275" />
+<img width="1092" height="275" alt="Screenshot 2026-01-21 163605" src="https://github.com/user-attachments/assets/9678fc56-8dd9-49ac-8b49-bc7d12184cba" />
+<img width="1087" height="388" alt="Screenshot 2026-01-21 163817" src="https://github.com/user-attachments/assets/e411ca40-0bce-4d40-acce-6603bcb48b90" />
+
+**I logged into Grafana using the admin account and accessed it through a local port-forward on localhost:3000. After logging in, I confirmed that Grafana was successfully connected to Prometheus by running queries and seeing live Kubernetes metrics displayed in the Explore dashboard:**
+
+<img width="952" height="929" alt="Screenshot 2026-01-21 163856" src="https://github.com/user-attachments/assets/2ae9ce87-fc23-4416-a141-6bf49475a689" />
+<img width="2531" height="1331" alt="Screenshot 2026-01-21 164318" src="https://github.com/user-attachments/assets/1dca109c-2dfd-491e-ad00-c17d8b8ebd52" />
+
 
 
 
